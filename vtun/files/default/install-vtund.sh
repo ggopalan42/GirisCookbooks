@@ -1,1 +1,1 @@
-yum install vtun
+yum install -y vtun
