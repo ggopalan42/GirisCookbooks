@@ -1,0 +1,41 @@
+#
+options {
+  port 5000;            # Listen on this port.
+  # bindaddr { iface lo; };   # Listen only on loopback device.
+
+  # Syslog facility
+  syslog        daemon;
+
+  # Path to various programs
+  ppp           /usr/sbin/pppd;
+  ifconfig      /sbin/ifconfig;
+  route         /sbin/route;
+  firewall      /sbin/ipchains;
+  ip            /sbin/ip;
+}
+
+# Default session options
+default {
+  compress no;          # Compression is off by default
+  speed 0;              # By default maximum speed, NO shaping
+}
+
+# TUN example. Session 'cobra'.
+cobra {
+  passwd  abcd;         # Password
+  type  tun;            # IP tunnel
+  proto tcp;            # UDP protocol
+  compress  no;         # LZO compression level 9
+  encrypt  no;          # Encryption
+  keepalive yes;        # Keep connection alive
+
+  up {
+     # Connection is Up
+
+     # 10.160.1.1 - local, 10.160.1.2 - remote
+     ifconfig "%% 172.16.0.1 pointopoint 172.16.0.2 mtu 1450";
+     # route "add -net 10.161.45.0 netmask 255.255.255.0 gw 172.16.0.2";
+
+  };
+}
+
