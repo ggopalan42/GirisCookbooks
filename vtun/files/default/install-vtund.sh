@@ -1,2 +1,2 @@
 yum install -y vtun
-vtund -f /tmp/aws.server
+vtund -s -f /tmp/aws.server
