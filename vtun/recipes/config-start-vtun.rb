@@ -14,6 +14,6 @@ end
 execute "get private ip" do
   command "touch '/tmp/touch_test'"
   command "echo 'Private IP: test' > '/tmp/my_test'"
-  command "echo 'Private IP: #{node[:opsworks][:layers][:php-app][:instances]}' > '/tmp/my_private_ip'"
+  command "echo 'Private IP: #{node[:opsworks][:layers]['php-app'][:instances].first[1][:private_ip]}' > '/tmp/my_private_ip'"
 end
 
