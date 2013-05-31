@@ -1,2 +1,2 @@
 yum install -y vtun
-vtund -s -f /tmp/aws.server
+tar xvf vtund_conf.tar

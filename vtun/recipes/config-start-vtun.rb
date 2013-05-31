@@ -1,10 +1,10 @@
+cookbook_file "/tmp/vtund_conf.tar" do
+  source "vtund_conf.tar"
+end
+
 cookbook_file "/tmp/install-vtund.sh" do
   source "install-vtund.sh"
   mode 0755
-end
-
-cookbook_file "/tmp/aws.server" do
-  source "aws.server"
 end
 
 execute "install vtund" do
